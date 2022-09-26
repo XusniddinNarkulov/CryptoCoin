@@ -298,23 +298,40 @@ a:hover {
    justify-content: space-between !important;
 }
 .news-title {
-   width: 70%;
+   overflow: hidden;
+   display: -webkit-box;
+   -webkit-line-clamp: 3;
+   -webkit-box-orient: vertical;
 }
 
 .news-image-container .img {
-   width: 100px;
-   height: 100px;
+   /* width: 100px; */
+   /* max-height: 100px; */
 }
 .news-card p {
    color: black;
    margin: 10px 0px !important;
+   overflow: hidden;
+   display: -webkit-box;
+   -webkit-line-clamp: 4;
+   -webkit-box-orient: vertical;
 }
 .provider-container {
    display: flex;
    justify-content: space-between;
+   align-items: center;
+   gap: 10px;
+}
+.provider-container-left {
+   display: flex;
+   align-items: center;
+   width: 60%;
 }
 .provider-name {
    margin-left: 10px;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
 }
 
 .chart-header {

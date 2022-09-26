@@ -10,7 +10,7 @@ const { Title } = Typography;
 
 const Home = () => {
    const { data, isFetching, isError } = useGetCryptosQuery(10);
-   console.log(useGetCryptosQuery());
+   // console.log(useGetCryptosQuery());
 
    if (isFetching) return "loading...";
 
