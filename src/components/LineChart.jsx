@@ -34,7 +34,7 @@ const LineChart = ({
    isFetchingHistory,
    isErrorHistory,
 }) => {
-   console.log(coinHistory);
+   // console.log(coinHistory);
 
    // console.log(coinPrice);
    // console.log(coinTimeStamp);
