@@ -18,11 +18,11 @@ const items = [
       key: "cryptocurrencies",
       icon: <FundOutlined />,
    },
-   {
-      label: <Link to="/exchanges">Exchanges</Link>,
-      key: "exchanges",
-      icon: <MoneyCollectOutlined />,
-   },
+   // {
+   //    label: <Link to="/exchanges">Exchanges</Link>,
+   //    key: "exchanges",
+   //    icon: <MoneyCollectOutlined />,
+   // },
    { label: <Link to="/news">News</Link>, key: "news", icon: <BulbOutlined /> },
 ];
 
@@ -40,17 +40,18 @@ const Navbar = () => {
       return () => window.removeEventListener("resize", handleResize);
    }, []);
 
+   console.log(screenSize);
+
    useEffect(() => {
-      if (screenSize < 768) {
+      if (screenSize < 801) {
          setActiveMenu(false);
+         window.onclick = () => {
+            setActiveMenu(false);
+         };
       } else {
          setActiveMenu(true);
       }
    }, [screenSize]);
-
-   window.onclick = (e) => {
-      setActiveMenu(false);
-   };
 
    return (
       <div className="nav-container">

@@ -27,7 +27,7 @@ const Home = () => {
       } = data?.data?.stats;
 
       return (
-         <>
+         <div style={{ paddingLeft: "3%" }}>
             <Title level={2} className="heading">
                Global Crypto Stats
             </Title>
@@ -89,7 +89,7 @@ const Home = () => {
             </div>
 
             <News simplified />
-         </>
+         </div>
       );
    }
 };
