@@ -40,7 +40,7 @@ const Navbar = () => {
       return () => window.removeEventListener("resize", handleResize);
    }, []);
 
-   console.log(screenSize);
+   // console.log(screenSize);
 
    useEffect(() => {
       if (screenSize < 801) {

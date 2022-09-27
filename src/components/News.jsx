@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Select, Typography, Row, Col, Avatar, Card } from "antd";
+import { Select, Typography, Row, Col, Avatar, Card, Spin } from "antd";
 import moment from "moment";
 
 import { useGetCryptoNewsQuery } from "../services/cryptoNewsApi";
@@ -24,7 +24,20 @@ const News = ({ simplified }) => {
       isFetching: coinsIsFetching,
    } = useGetCryptosQuery(100);
 
-   if (isFetching) return "Loading...";
+   if (isFetching)
+      return (
+         <div
+            style={{
+               minHeight: "80vh",
+               width: "100%",
+               display: "flex",
+               justifyContent: "center",
+               alignItems: "center",
+            }}
+         >
+            <Spin size="large" />
+         </div>
+      );
 
    if (isError) return "Error";
 
@@ -49,8 +62,10 @@ const News = ({ simplified }) => {
                      value={newsCategory}
                   >
                      <Option value="Cryptocurrency">Cryptocurrency</Option>
-                     {coins?.data?.coins.map((coin) => (
-                        <Option value={coin.name}>{coin.name}</Option>
+                     {coins?.data?.coins.map((coin, i) => (
+                        <Option value={coin.name} key={i}>
+                           {coin.name}
+                        </Option>
                      ))}
                   </Select>
                </Col>

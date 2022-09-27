@@ -12,7 +12,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import moment from "moment";
-import { Col, Row, Typography } from "antd";
+import { Col, Row, Typography, Spin } from "antd";
 
 const { Title: T } = Typography;
 
@@ -40,7 +40,20 @@ const LineChart = ({
    // console.log(coinTimeStamp);
 
    if (isErrorHistory) return "Error";
-   if (isFetchingHistory) return "Loading...";
+   if (isFetchingHistory)
+      return (
+         <div
+            style={{
+               minHeight: "80vh",
+               width: "100%",
+               display: "flex",
+               justifyContent: "center",
+               alignItems: "center",
+            }}
+         >
+            <Spin size="large" />
+         </div>
+      );
 
    if (coinHistory) {
       let coinPrice = [];

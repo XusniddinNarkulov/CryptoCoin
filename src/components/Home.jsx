@@ -1,6 +1,6 @@
 import React from "react";
 import millify from "millify";
-import { Typography, Row, Col, Statistic } from "antd";
+import { Typography, Row, Col, Statistic, Spin } from "antd";
 import { Link } from "react-router-dom";
 
 import { useGetCryptosQuery } from "../services/cryptoApi";
@@ -12,7 +12,20 @@ const Home = () => {
    const { data, isFetching, isError } = useGetCryptosQuery(10);
    // console.log(useGetCryptosQuery());
 
-   if (isFetching) return "loading...";
+   if (isFetching)
+      return (
+         <div
+            style={{
+               minHeight: "80vh",
+               width: "100%",
+               display: "flex",
+               justifyContent: "center",
+               alignItems: "center",
+            }}
+         >
+            <Spin size="large" />
+         </div>
+      );
 
    if (isError) return "error";
 

@@ -1,5 +1,6 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
+import { getDefaultNormalizer } from "@testing-library/react";
 import thunk from "redux-thunk";
 
 import { cryptoApi } from "../services/cryptoApi";
@@ -10,9 +11,14 @@ const store = configureStore({
       [cryptoApi.reducerPath]: cryptoApi.reducer,
       [cryptoNewsApi.reducerPath]: cryptoNewsApi.reducer,
    },
-   middleware: [thunk],
+   middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(
+         cryptoApi.middleware,
+         cryptoNewsApi.middleware
+      ),
    // middleware: (getDefaultMiddleware) =>
-   //    getDefaultMiddleware().concat(cryptoApi.middleware),
+   //    getDefaultMiddleware().concat(cryptoNewsApi.middleware),
+   // middleware: [thunk],
    // middleware: (getDefaultMiddleware) =>
    //    getDefaultMiddleware({
    //       thunk: {

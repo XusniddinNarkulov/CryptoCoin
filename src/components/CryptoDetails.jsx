@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import HTMLReactParser from "html-react-parser";
 import { useParams } from "react-router-dom";
 import millify from "millify";
-import { Col, Row, Typography, Select } from "antd";
+import { Col, Row, Typography, Select, Spin } from "antd";
 import {
    MoneyCollectOutlined,
    DollarCircleOutlined,
@@ -41,7 +41,20 @@ const CryptoDetails = () => {
 
    if (isError) return "Error";
 
-   if (isFetching) return "Loading...";
+   if (isFetching)
+      return (
+         <div
+            style={{
+               minHeight: "80vh",
+               width: "100%",
+               display: "flex",
+               justifyContent: "center",
+               alignItems: "center",
+            }}
+         >
+            <Spin size="large" />
+         </div>
+      );
 
    if (data) {
       const cryptoDetails = data?.data?.coin;
