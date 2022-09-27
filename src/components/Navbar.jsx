@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Menu, Typography, Avatar } from "antd";
 import { Link } from "react-router-dom";
 import {
@@ -27,6 +27,31 @@ const items = [
 ];
 
 const Navbar = () => {
+   const [activeMenu, setActiveMenu] = useState();
+   const [screenSize, setScreenSize] = useState();
+
+   useEffect(() => {
+      const handleResize = () => setScreenSize(window.innerWidth);
+
+      window.addEventListener("resize", handleResize);
+
+      handleResize();
+
+      return () => window.removeEventListener("resize", handleResize);
+   }, []);
+
+   useEffect(() => {
+      if (screenSize < 768) {
+         setActiveMenu(false);
+      } else {
+         setActiveMenu(true);
+      }
+   }, [screenSize]);
+
+   window.onclick = (e) => {
+      setActiveMenu(false);
+   };
+
    return (
       <div className="nav-container">
          <div className="logo-container">
@@ -36,10 +61,18 @@ const Navbar = () => {
                <Link to="/">CryptoCoins</Link>
             </Typography.Title>
 
-            <Button className="menu-control-container"></Button>
+            <Button
+               className="menu-control-container"
+               onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveMenu((prev) => !prev);
+               }}
+            >
+               <MenuOutlined />
+            </Button>
          </div>
 
-         <Menu theme="light" items={items} />
+         {activeMenu && <Menu theme="dark" items={items} />}
       </div>
    );
 };
