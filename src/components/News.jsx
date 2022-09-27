@@ -16,7 +16,7 @@ const News = ({ simplified }) => {
       newsCategory,
       count: simplified ? 8 : 16,
    });
-   console.log(data);
+   // console.log(data);
 
    const {
       data: coins,

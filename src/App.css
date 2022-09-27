@@ -164,6 +164,7 @@ a:hover {
    justify-content: space-between;
    align-items: center;
    gap: 40px;
+   margin-top: 3%;
 }
 
 .stats-container h2 {
@@ -212,12 +213,14 @@ a:hover {
 
 .coin-desc-link h2 {
    font-weight: 700;
-   color: var(--pink);
+   /* color: var(--pink); */
 }
 
 .coin-desc-link p {
    font-size: 1rem;
    opacity: 0.9;
+   color: #001529;
+   font-weight: 400;
 }
 
 .coin-desc-link a {
@@ -226,6 +229,7 @@ a:hover {
 
 .coin-desc-link h3 {
    font-weight: 700;
+   color: #0071bd !important;
 }
 
 .coin-desc {
@@ -295,7 +299,8 @@ a:hover {
 }
 .news-image-container {
    display: flex !important;
-   justify-content: space-between !important;
+   gap: 5px;
+   align-items: center;
 }
 .news-title {
    overflow: hidden;
@@ -354,7 +359,7 @@ a:hover {
 }
 .current-price {
    margin-top: 0px !important;
-   font-weight: 900 !important;
+   font-weight: 400 !important;
 }
 .home-heading-container {
    display: flex;
